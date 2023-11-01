@@ -4,7 +4,7 @@
 
 int main()
 {
-	std::cout << "Singly Linked List Class v1.0.0\n\n";
+	std::cout << "Singly Linked List Class v1.0.1\n\n";
 	int result;
 	int nodeCount;
 	int data;
@@ -30,7 +30,7 @@ int main()
 		std::cout << "List is empty.\n";
 	}
 	/// test code here: ////////////////////////////////////////
-	result = slist.shuffle(&list);
+	
 	std::cout << "result: " << result << "\n\n";
 	////////////////////////////////////////////////////////////
 	result = slist.size(list, nodeCount);

@@ -29,6 +29,8 @@ public:
 	int deleteAfterPtr(node** list, node* ptr);
 	int returnPtrByPos(node* list, int pos, node* &ptr);
 	int returnPosByPtr(node* list, int &pos, node* ptr);
+	int returnFrontData(node* list, int &data);
+	int returnBackData(node* list, int &data);
 	int returnDataByPos(node* list, int &data, int pos);
 	int returnDataByPtr(node* list, int &data, node* ptr);
 	int updateDataByPos(node* list, int data, int pos);
@@ -39,6 +41,8 @@ public:
 	int findMinReturnPtr(node* list, int &min, node* &ptr);
 	int findMaxReturnPos(node* list, int &max, int &pos);
 	int findMaxReturnPtr(node* list, int &max, node* &ptr);
+	int findMidReturnPos(node* list, int &pos);
+	int findMidReturnPtr(node** list, node* &ptr);
 	int findTailReturnPos(node* list, int &pos);
 	int findTailReturnPtr(node* list, node* &ptr);
 	int movePosToFront(node** list, int pos);

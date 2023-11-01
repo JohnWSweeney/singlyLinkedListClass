@@ -9,6 +9,7 @@
 // 0	no error.
 // 1	list is nullptr.
 // 2	ptr is nullptr.
+// 3	list has less than three nodes.
 // 5	list has only one node.
 // -1	pos/ptr not in list.
 // -2	no action needed.
@@ -358,6 +359,26 @@ int sList::returnPosByPtr(node* list, int &pos, node* ptr)
 	return -1;
 }
 
+int sList::returnFrontData(node* list, int &data)
+{
+	if (list == nullptr) return 1; // list is empty.
+	data = list->data;
+	return 0;
+}
+
+int sList::returnBackData(node* list, int &data)
+{
+	if (list == nullptr) return 1; // list is empty.
+	do {
+		if (list->next == nullptr)
+		{
+			data = list->data;
+			return 0;
+		}
+		list = list->next;
+	} while (list != nullptr);
+}
+
 int sList::returnDataByPos(node* list, int &data, int pos)
 {
 	if (list == nullptr) return 1;
@@ -527,6 +548,57 @@ int sList::findMaxReturnPtr(node* list, int &max, node* &ptr)
 		}
 		list = list->next;
 	} while (list != nullptr);
+	return 0;
+}
+
+int sList::findMidReturnPos(node* list, int &pos)
+{
+	if (list == nullptr) return 1; // list is empty;
+	// check if list has at least three nodes.
+	if (list->next->next == nullptr) return 3;
+
+	int tempPos = 1;
+	do {
+		++tempPos;
+		list = list->next;
+	} while (list->next != nullptr);
+
+	int mod = tempPos % 2;
+	if(mod == 1)
+	{
+		pos = (tempPos / 2);
+	}
+	else
+	{
+		pos = (tempPos / 2) - 1;
+	}
+	return 0;
+}
+
+int sList::findMidReturnPtr(node** list, node* &ptr)
+{
+	if (*list == nullptr) return 1; // list is empty.
+	// check if list has at least three nodes.
+	node* head = *list;
+	if (head->next->next == nullptr) return 3;
+
+	node* ptrList = *list;
+	int tempPos = 2;
+	ptr = ptrList->next;
+	node* curr = nullptr;
+	*list = ptr;
+	do {
+		int mod = tempPos % 2;
+		if (mod == 1)
+		{
+			ptrList = ptrList->next;
+			ptr = ptrList;
+		}
+		++tempPos;
+		curr = *list;
+		*list = curr->next;
+	} while (curr->next != nullptr);
+	*list = head;
 	return 0;
 }
 
