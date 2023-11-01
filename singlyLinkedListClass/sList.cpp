@@ -24,7 +24,12 @@ node* sList::init(int data)
 
 int sList::addNodeFront(node** list, int data)
 {
-	if (*list == nullptr) return 1;
+	if (*list == nullptr) // list is empty.
+	{
+		*list = this->init(data);
+		return 0;
+	}
+
 	node* head = *list;
 	node* newNode = new node();
 	newNode->data = data;
@@ -34,21 +39,28 @@ int sList::addNodeFront(node** list, int data)
 	return 0;
 }
 
-int sList::addNodeBack(node* list, int data)
+int sList::addNodeBack(node** list, int data)
 {
-	if (list == nullptr) return 1;
+	if (*list == nullptr) // list is empty.
+	{
+		*list = this->init(data);
+		return 0;
+	}
 
+	node* head = *list;
 	do {
-		if (list->next == nullptr)
+		node* curr = *list;
+		if (curr->next == nullptr)
 		{
 			node* newNode = new node();
 			newNode->data = data;
+			curr->next = newNode;
 			newNode->next = nullptr;
-			list->next = newNode;
+			*list = head;
 			return 0;
 		}
-		list = list->next;
-	} while (list != nullptr);
+		*list = curr->next;
+	} while (*list != nullptr);
 }
 
 int sList::addNodeByPos(node** list, int pos, int data)
@@ -56,7 +68,6 @@ int sList::addNodeByPos(node** list, int pos, int data)
 	if (*list == nullptr) return 1; // list is empty.
 	
 	node* head = *list;
-	
 	if (pos == 0) // if pos is head node.
 	{
 		node* newNode = new node();
