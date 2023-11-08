@@ -22,7 +22,7 @@ node* sList::init(int data)
 	return newNode;
 }
 
-int sList::addNodeFront(node** list, int data)
+int sList::addFront(node** list, int data)
 {
 	if (*list == nullptr) // list is empty.
 	{
@@ -39,7 +39,7 @@ int sList::addNodeFront(node** list, int data)
 	return 0;
 }
 
-int sList::addNodeBack(node** list, int data)
+int sList::addBack(node** list, int data)
 {
 	if (*list == nullptr) // list is empty.
 	{
@@ -63,7 +63,7 @@ int sList::addNodeBack(node** list, int data)
 	} while (*list != nullptr);
 }
 
-int sList::addNodeByPos(node** list, int pos, int data)
+int sList::addByPos(node** list, int pos, int data)
 {
 	if (*list == nullptr) return 1; // list is empty.
 	
@@ -104,7 +104,7 @@ int sList::addNodeByPos(node** list, int pos, int data)
 	return -1;
 }
 
-int sList::deleteNodeFront(node** list)
+int sList::deleteFront(node** list)
 {
 	if (*list == nullptr) return 1;
 
@@ -114,7 +114,7 @@ int sList::deleteNodeFront(node** list)
 	return 0;
 }
 
-int sList::deleteNodeBack(node** list)
+int sList::deleteBack(node** list)
 {
 	if (*list == nullptr) return 1;
 
@@ -138,7 +138,7 @@ int sList::deleteNodeBack(node** list)
 	} while (*list != nullptr);
 }
 
-int sList::deleteNodeByPos(node** list, int pos)
+int sList::deletePos(node** list, int pos)
 {
 	if (*list == nullptr) return 1;
 
@@ -168,7 +168,7 @@ int sList::deleteNodeByPos(node** list, int pos)
 	return -1;
 }
 
-int sList::deleteNodeByPtr(node** list, node* ptr)
+int sList::deletePtr(node** list, node* ptr)
 {
 	if (list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -335,7 +335,7 @@ int sList::deleteAfterPtr(node** list, node* ptr)
 	return -1;
 }
 
-int sList::returnPtrByPos(node* list, int pos, node* &ptr)
+int sList::returnPosPtr(node* list, node* &ptr, int pos)
 {
 	if (list == nullptr) return 1;
 
@@ -352,7 +352,7 @@ int sList::returnPtrByPos(node* list, int pos, node* &ptr)
 	return -1;
 }
 
-int sList::returnPosByPtr(node* list, int &pos, node* ptr)
+int sList::returnPtrPos(node* list, int &pos, node* ptr)
 {
 	if (list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -390,7 +390,7 @@ int sList::returnBackData(node* list, int &data)
 	} while (list != nullptr);
 }
 
-int sList::returnDataByPos(node* list, int &data, int pos)
+int sList::returnPosData(node* list, int &data, int pos)
 {
 	if (list == nullptr) return 1;
 
@@ -407,7 +407,7 @@ int sList::returnDataByPos(node* list, int &data, int pos)
 	return -1;
 }
 
-int sList::returnDataByPtr(node* list, int &data, node* ptr)
+int sList::returnPtrData(node* list, int &data, node* ptr)
 {
 	if (list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -423,7 +423,7 @@ int sList::returnDataByPtr(node* list, int &data, node* ptr)
 	return -1;
 }
 
-int sList::updateDataByPos(node* list, int data, int pos)
+int sList::updatePosData(node* list, int pos, int data)
 {
 	if (list == nullptr) return 1;
 
@@ -440,7 +440,7 @@ int sList::updateDataByPos(node* list, int data, int pos)
 	return -1;
 }
 
-int sList::updateDataByPtr(node* list, int data, node* ptr)
+int sList::updatePtrData(node* list, node* ptr, int data)
 {
 	if (list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -456,7 +456,7 @@ int sList::updateDataByPtr(node* list, int data, node* ptr)
 	return -1;
 }
 
-int sList::findDataReturnPos(node* list, int data, int &pos)
+int sList::returnDataPos(node* list, int data, int &pos)
 {
 	if (list == nullptr) return 1;
 
@@ -473,7 +473,7 @@ int sList::findDataReturnPos(node* list, int data, int &pos)
 	return -1;
 }
 
-int sList::findDataReturnPtr(node* list, int data, node* &ptr)
+int sList::returnDataPtr(node* list, int data, node* &ptr)
 {
 	if (list == nullptr) return 1;
 
@@ -488,7 +488,7 @@ int sList::findDataReturnPtr(node* list, int data, node* &ptr)
 	return -1;
 }
 
-int sList::findMinReturnPos(node* list, int &min, int &pos)
+int sList::returnMinPos(node* list, int &min, int &pos)
 {
 	if (list == nullptr) return 1;
 
@@ -508,7 +508,7 @@ int sList::findMinReturnPos(node* list, int &min, int &pos)
 	return 0;
 }
 
-int sList::findMinReturnPtr(node* list, int &min, node* &ptr)
+int sList::returnMinPtr(node* list, int &min, node* &ptr)
 {
 	if (list == nullptr) return 1;
 
@@ -525,7 +525,7 @@ int sList::findMinReturnPtr(node* list, int &min, node* &ptr)
 	return 0;
 }
 
-int sList::findMaxReturnPos(node* list, int &max, int &pos)
+int sList::returnMaxPos(node* list, int &max, int &pos)
 {
 	if (list == nullptr) return 1;
 
@@ -545,7 +545,7 @@ int sList::findMaxReturnPos(node* list, int &max, int &pos)
 	return 0;
 }
 
-int sList::findMaxReturnPtr(node* list, int &max, node* &ptr)
+int sList::returnMaxPtr(node* list, int &max, node* &ptr)
 {
 	if (list == nullptr) return 1;
 
@@ -562,7 +562,7 @@ int sList::findMaxReturnPtr(node* list, int &max, node* &ptr)
 	return 0;
 }
 
-int sList::findMidReturnPos(node* list, int &pos)
+int sList::returnMidPos(node* list, int &pos)
 {
 	if (list == nullptr) return 1; // list is empty;
 	// check if list has at least three nodes.
@@ -586,7 +586,7 @@ int sList::findMidReturnPos(node* list, int &pos)
 	return 0;
 }
 
-int sList::findMidReturnPtr(node** list, node* &ptr)
+int sList::returnMidPtr(node** list, node* &ptr)
 {
 	if (*list == nullptr) return 1; // list is empty.
 	// check if list has at least three nodes.
@@ -613,7 +613,7 @@ int sList::findMidReturnPtr(node** list, node* &ptr)
 	return 0;
 }
 
-int sList::findTailReturnPos(node* list, int &pos)
+int sList::returnTailPos(node* list, int &pos)
 {
 	if (list == nullptr) return 1;
 
@@ -629,7 +629,7 @@ int sList::findTailReturnPos(node* list, int &pos)
 	} while (list != nullptr);
 }
 
-int sList::findTailReturnPtr(node* list, node* &ptr)
+int sList::returnTailPtr(node* list, node* &ptr)
 {
 	if (list == nullptr) return 1;
 
@@ -643,7 +643,7 @@ int sList::findTailReturnPtr(node* list, node* &ptr)
 	} while (list != nullptr);
 }
 
-int sList::movePosToFront(node** list, int pos)
+int sList::movePosFront(node** list, int pos)
 {
 	if (*list == nullptr) return 1;
 
@@ -672,7 +672,7 @@ int sList::movePosToFront(node** list, int pos)
 	return -1;
 }
 
-int sList::movePosToBack(node** list, int pos)
+int sList::movePosBack(node** list, int pos)
 {
 	if (*list == nullptr) return 1;
 
@@ -728,7 +728,7 @@ int sList::movePosToBack(node** list, int pos)
 	else return -1;
 }
 
-int sList::movePtrToFront(node** list, node* ptr)
+int sList::movePtrFront(node** list, node* ptr)
 {
 	if (*list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -751,7 +751,7 @@ int sList::movePtrToFront(node** list, node* ptr)
 	return -1;
 }
 
-int sList::movePtrToBack(node** list, node* ptr)
+int sList::movePtrBack(node** list, node* ptr)
 {
 	if (*list == nullptr) return 1;
 	if (ptr == nullptr) return 2;
@@ -1127,8 +1127,8 @@ int sList::shuffle(node** list)
 
 		node* ptr1 = nullptr;
 		node* ptr2 = nullptr;
-		returnPtrByPos(*list, position1, ptr1);
-		returnPtrByPos(*list, position2, ptr2);
+		returnPosPtr(*list, ptr1, position1);
+		returnPosPtr(*list, ptr2, position2);
 		swap(list, ptr1, ptr2);
 		++temp;
 	} while (temp < pow(nodeCount, 2));

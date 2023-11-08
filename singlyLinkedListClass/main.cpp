@@ -4,7 +4,7 @@
 
 int main()
 {
-	std::cout << "Singly Linked List Class v1.0.2\n\n";
+	std::cout << "Singly Linked List Class v1.0.3\n\n";
 	int result;
 	int nodeCount;
 	int data;
@@ -16,7 +16,7 @@ int main()
 
 	for (int i = -5; i < 5; i++)
 	{
-		slist.addNodeBack(&list, pow(i, 4));
+		slist.addBack(&list, pow(i, 4));
 	}
 	result = slist.size(list, nodeCount);
 	if (result == 0)
@@ -29,7 +29,7 @@ int main()
 		std::cout << "List is empty.\n";
 	}
 	/// test code here: ////////////////////////////////////////
-
+	
 	std::cout << "result: " << result << "\n\n";
 	////////////////////////////////////////////////////////////
 	result = slist.size(list, nodeCount);
